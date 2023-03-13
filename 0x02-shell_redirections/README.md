@@ -12,4 +12,6 @@ script 10-no_more_js-Write a script that deletes all the regular files (not the 
 script 11
 script 12-newest_files:-a script that displays the 10 newest files in the current directory.
 scritp 13-unique:  Being unique is better than being perfect
+script 14-findthatword"Display lines containing the pattern “root” from the file /etc/passwd"
+
 
