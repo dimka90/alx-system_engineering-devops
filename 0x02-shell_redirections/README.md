@@ -9,3 +9,5 @@ script 7...
 script 8-cwd_state-8"Save current state of directory"
 scipt 9.
 script 10-no_more_js-Write a script that deletes all the regular files (not the directories) with a .js extension that are present in the current directory and all its subfolders
+script 11
+script 12-newest_files:-a script that displays the 10 newest files in the current directory.
