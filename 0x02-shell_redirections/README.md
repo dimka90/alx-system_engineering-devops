@@ -14,5 +14,7 @@ script 12-newest_files:-a script that displays the 10 newest files in the curren
 scritp 13-unique:  Being unique is better than being perfect
 script 14-findthatword"Display lines containing the pattern “root” from the file /etc/passwd"
 script 15-countthatword"Display the number of lines that contain the pattern “bin” in the file /etc/passwd"
+script 16
+script 17-hidethisword"Display all the lines in the file /etc/passwd that do not contain the pattern “bin”."
 
 
