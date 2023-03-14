@@ -6,3 +6,4 @@
 3 Create a script that counts the number of directories in the PATH.
 4 printing env variables
 5 local_variables using set
+6-create_local_variable
