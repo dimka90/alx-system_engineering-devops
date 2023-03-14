@@ -7,3 +7,4 @@
 4 printing env variables
 5 local_variables using set
 6-create_local_variable
+7-create_global_variable
