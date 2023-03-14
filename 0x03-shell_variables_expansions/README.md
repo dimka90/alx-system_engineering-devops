@@ -9,3 +9,4 @@
 6-create_local_variable
 7-create_global_variable
 8-Concatenation using addition
+9-Division of number
