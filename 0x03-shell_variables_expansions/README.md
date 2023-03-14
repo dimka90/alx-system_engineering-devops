@@ -10,3 +10,4 @@
 7-create_global_variable
 8-Concatenation using addition
 9-Division of number
+10-Expontianial
