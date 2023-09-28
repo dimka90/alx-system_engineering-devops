@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+# a function that perform some task
+# Check if the /etc/passwd file exists
+if [ -e /etc/passwd ]; then
+    # Use IFS (Internal Field Separator) to split each line into fields
+    IFS=":"
+
+    # Open /etc/passwd file for reading
+    exec 3< /etc/passwd
+
+    # Read and process each line in the file
+    while read -u 3 -r username  uid homedir ; do
+        # Display the required information
+        echo "Username: $username"
+        echo "User ID: $uid"
+        echo "Home Directory: $homedir"
+    done
+
+    # Close the file descriptor
+    exec 3<&-
+else
+    echo "The /etc/passwd file does not exist."
+fi
