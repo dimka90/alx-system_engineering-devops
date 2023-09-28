@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+#A function that displays the list of files in a current working directory
+
+current_dir=$(pwd)
+
+ls "$current_dir" | while read  file; do
+    file_name=$(echo "$file" | awk -F'-' '{print $2}')
+
+    if [ -n "$file_name" ]; then
+	    echo "$file_name"
+    fi
+done
