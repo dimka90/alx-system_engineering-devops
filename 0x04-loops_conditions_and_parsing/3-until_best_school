@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+#A script that prints Best school to the stdout using untill
+
+counter=1
+
+until [ $counter -gt 10 ]
+do
+	echo "Best School"
+	((counter++))
+done
