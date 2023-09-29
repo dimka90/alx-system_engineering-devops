@@ -1,3 +1,9 @@
 #!/usr/bin/env bash
 # a Bash script that displays a list of currently running processes
-ps -e -o user,pid,%cpu,%mem,vsz,rss,tty,stat,start,time,comm --forest
+
+#ps : list of the processes running on the computer
+#-a : this flag list all process about all users, not just the current user
+#-x : this flag list all the process that are associated with the system, not jus the terminal,this might include foreground and background processes
+#-u : This flag list the process in user oriented format
+#-f : this flag list the full-format listing of the processes
+ps -a -x -u -f
