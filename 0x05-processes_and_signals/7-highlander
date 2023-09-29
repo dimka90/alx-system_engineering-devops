@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+# a function that recieves a SIGTERM signal call and execute the command in the cleanup function
+#trap: it is used to called a command or a function that is to be executed when a SIGTERM called is recieved
+#SIGTERM: list of signals
+cleanup()
+{
+
+echo "I am invincible!!!"
+}
+
+trap cleanup SIGTERM
+counter=1
+while [ $counter -le 2 ]
+do
+	echo "To infinity and beyond"
+	sleep 2
+done

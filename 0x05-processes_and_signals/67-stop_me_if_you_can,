@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+# a script that terminate a program by using the pkill command
+#pkill: a command that terminate a process from running
+# -f: this flag searches for the full name of the process
+# 4-to_infinity_and_beyond: name of the process to search for 
+pkill -f "7-highlander"
