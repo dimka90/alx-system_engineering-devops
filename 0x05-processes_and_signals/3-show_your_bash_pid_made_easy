@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# a script that print the pid of bas
+#pid: process indentify of the bash
+#pgrep: process global regular expression print, is a command similar to grep that searches for the pid of a process using it name or attribute
+#bash: name of the instance program to search for
+#echo: command to print
+#$: a symbol for command subtitution 
+pid=$(pgrep bash)
+echo "$pid"
