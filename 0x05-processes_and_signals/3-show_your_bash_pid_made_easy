@@ -6,4 +6,4 @@
 #echo: command to print
 #$: a symbol for command subtitution 
 pid=$(pgrep bash)
-echo "$pid"
+echo "$pid bash"
