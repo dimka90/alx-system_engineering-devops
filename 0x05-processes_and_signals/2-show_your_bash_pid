@@ -1,7 +1,12 @@
 #!/usr/bin/env bash
-# a Bash script that displays lines containing the bash word, thus allowing you to easily get the PID of your Bash process.
-# shellcheck disable=SC2009
-
-# Display lines containing the word "bash" in the process list
+# a Bash script that displays all the  list of currently running processes which include(tty process, foreground and system process) and 
+# filter it by printing on the line with bash using the grip command
+#ps : list of the processes running on the computer
+#-a : this flag list all process about all users, not just the current user
+#-x : this flag list all the process that are associated with the system, not jus the terminal,this might include foreground and background processes
+#-u : This flag list the process in user oriented format
+#-f : this flag list the full-format listing of the processes
+# | : this symbols represent the pipe symbol which is used for redirection
+#grep :gloabal regular expression print,  is command used to search for a pattern or a text, file and print the matching pattern
+#bash: it is the word to be search using grep 
 ps -a -x -u -f | grep bash
-
