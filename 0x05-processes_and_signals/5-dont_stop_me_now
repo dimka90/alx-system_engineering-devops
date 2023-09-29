@@ -6,4 +6,3 @@
 #-f: it used for searching an entire command
 #pgrep : it is used to search for a particular process
 kill "$(ps -x | pgrep -f 4-to_infinity_and_beyond)"
-echo "Terminated"
