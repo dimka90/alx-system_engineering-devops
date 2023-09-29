@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+# a script that runs an infinite loop
+#kill: it is used to terminate a running process
+#ps: lists all of the running process in the computer
+#-x : This flag makes ps to list process that are not just connected to this termal(tty) but the whole syste
+#-f: it used for searching an entire command
+#pgrep : it is used to search for a particular process
+kill "$(ps -x | pgrep -f 4-to_infinity_and_beyond)"
+echo "Terminated"
