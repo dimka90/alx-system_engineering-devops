@@ -1,9 +1,8 @@
 #!/usr/bin/env ruby
 
-arg=ARGV[0]
-
+#arg=ARGV[0]
+puts ARGV[0].scan(/hbt*n/).join
 #scanner=arg.scan(/hb(?!o)\w+/)
-scanner=arg.scan(/htb*n/).join
-if scanner.any?
-    puts scanner
-end
+#if scanner.any?
+#puts scanner
+#end
