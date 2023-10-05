@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#a script that update the domain name of the local machine and facebook
+
+#update local host
+localhost_mapping="127.0.0.2		localhost"
+facebook_mapping="8.8.8.8	facebook.com"
+if grep -q "$localhost_mapping" /etc/hosts; then
+    exit 0
+else
+    echo "$localhost_mapping">> /etc/hosts
+fi
+if grep -q "$facebook_mapping" /etc/hosts; then
+    exit
+else
+    echo "$facebook_mapping">> /etc/hosts
+fi 
