@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+# Use ifconfig to get network interface information
+ifconfig_output=$(ip add)
+
+# Use grep to extract IPv4 addresses from the ifconfig output
+ipv4_addresses=$(echo "$ifconfig_output" | grep -E -o 'inet ([0-9]*\.){3}[0-9]*' | awk '{print $2}')
+# Display the IPv4 addresses
+echo "$ipv4_addresses"
