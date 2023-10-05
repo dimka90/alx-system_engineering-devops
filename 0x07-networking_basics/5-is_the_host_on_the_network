@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# a script that takes in an IP address and ping it
+#$#: gives the total number of argument entered on the command line
+#ping: This command checks the network connectivity of the host and sender
+total_argument="$#"
+if [ "$total_argument" -lt 1 ]; then
+    echo "Usage: 5-is_the_host_on_the_network {IP_ADDRESS}"
+else
+    ping -c 5 $1
+fi
+  
