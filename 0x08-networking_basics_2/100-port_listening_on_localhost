@@ -2,5 +2,5 @@
 #listening for incomming
 
 PORT=98
-#nc -l -p $PORT
-nc -lk localhost "$PORT"
+nc -l  $PORT
+#nc -lk localhost "$PORT"
