@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# listening for incomming
+#listening for incomming
 
 PORT=98
 #nc -l -p $PORT
