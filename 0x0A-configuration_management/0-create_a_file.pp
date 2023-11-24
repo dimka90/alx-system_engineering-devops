@@ -1,4 +1,4 @@
-# created a manifest using a puppet 
+# created a manifest using a puppet that create a new file with some attributes
 
 node default{
 
