@@ -1,11 +1,10 @@
 #!/usr/bin/env bash
 # A script that connects to a server 
 
-# Declaring vairables
+# Declaring  servers configuration
 private_key="~/.ssh/school"
 server_uname="ubuntu"
 server_ip="52.3.247.22"
 #connecting to the server
 ssh "$server_uname"@"$server_ip" -i "$private-key"
 
-#ssh ubuntu@52.3.247.22 -i ~/.ssh/school
