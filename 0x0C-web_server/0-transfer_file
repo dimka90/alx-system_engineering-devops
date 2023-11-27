@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+# a script that copies a file from a host machine to a remote server
+
+# syntax scp filename sername:location
+
+scp -i "$4" "$1" "$3"@"$2":/home/ubuntu 
+
