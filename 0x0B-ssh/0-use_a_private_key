@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 # conecting to an online server using ssh
-ssh ubuntu@34.207.253.36 ~/.ssh/school
+ssh ubuntu@34.207.253.36 -i ~/.ssh/school
