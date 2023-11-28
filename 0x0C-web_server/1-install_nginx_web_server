@@ -1,0 +1,22 @@
+#!/usr/bin/env bash
+
+# Update package lists and install Nginx
+sudo apt-get update -y
+sudo apt-get install -y nginx
+
+# Ensure Nginx is running and listening on port 80
+sudo service nginx start
+
+# Create a default HTML file with "Hello World!"
+echo "<!DOCTYPE html>" | sudo tee /var/www/html/index.html
+echo "<html>" | sudo tee -a /var/www/html/index.html
+echo "<head>" | sudo tee -a /var/www/html/index.html
+echo "<title>Hello World!</title>" | sudo tee -a /var/www/html/index.html
+echo "</head>" | sudo tee -a /var/www/html/index.html
+echo "<body>" | sudo tee -a /var/www/html/index.html
+echo "<p>Hello World!</p>" | sudo tee -a /var/www/html/index.html
+echo "</body>" | sudo tee -a /var/www/html/index.html
+echo "</html>" | sudo tee -a /var/www/html/index.html
+
+# Restart Nginx
+sudo service nginx restart
