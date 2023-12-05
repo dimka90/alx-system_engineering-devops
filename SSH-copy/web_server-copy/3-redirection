@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# a script that performs a permanent redirect to another page using the sed command
+sudo apt-get update
+sudo apt-get -y install nginx
+#sudo ufw allow 'Nginx HTTP'
+echo "Hello World!" | sudo tee /var/www/html/index.html
+str_replacement="server_name _;\n\trewrite ^\/redirect_me https:\/\/www.youtube.com permanent;"
+
+sudo sed -i "s/server_name _;/$str_replacement/" /etc/nginx/sites-enabled/default
+
+sudo service nginx restart
