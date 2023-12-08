@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+get_subdomain_info() {
+    local domain="$1"
+    local subdomain="$2"
+    
+    if [ -z "$subdomain" ]; then
+        subdomains=("www" "lb-01" "web-01" "web-02")
+    else
+        subdomains=("$subdomain")
+    fi
+
+    for sub in "${subdomains[@]}"; do
+        result=$(dig "$sub.$domain" +short)
+        record_type=$(dig "$sub.$domain" | awk '/ANSWER SECTION/ {getline; print $4}')
+        echo "The subdomain $sub is a $record_type record and points to $result"
+    done
+}
+
+# Check for mandatory arguments
+if [ "$#" -lt 1 ]; then
+    echo "Usage: $0 <domain> [subdomain]"
+    exit 1
+fi
+
+# Execute the function with provided arguments
+get_subdomain_info "$1" "$2"
