@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
-
+# a bash script that tasks in a domain and sub domain and saves in a file
 get_subdomain_info() {
     local domain="$1"
     local subdomain="$2"
-    
+
     if [ -z "$subdomain" ]; then
         subdomains=("www" "lb-01" "web-01" "web-02")
     else
