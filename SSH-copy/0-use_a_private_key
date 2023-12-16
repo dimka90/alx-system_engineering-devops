@@ -1,3 +1,11 @@
 #!/usr/bin/env bash
 # conecting to an online server using ssh
-ssh ubuntu@$1 -i ~/.ssh/school
+if [ "$1" == 1 ]; then
+    ssh ubuntu@34.207.253.36 -i ~/.ssh/school
+elif [ "$1" == 2 ]; then
+    ssh ubuntu@100.25.166.148 -i ~/.ssh/school
+else
+    echo "Coding is fun"
+    ssh ubuntu@100.25.111.225 -i ~/.ssh/school
+
+fi
