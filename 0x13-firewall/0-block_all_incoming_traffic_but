@@ -1,6 +1,3 @@
-# Set default policies to deny incoming and allow outgoing
-uwf default deny incoming
-uwf default allow outgoing
 # Allow SSH (Port 22)
 uwf allow 22/tcp
 # Allow HTTPS (Port 443)
