@@ -1,54 +1,59 @@
 #!/usr/bin/python3
-"""This module a Rest Api that fetches information from the REST API"""
+"""This module fetches information from a REST API and exports
+data in JSON format
+"""
 import json
 import requests
 import sys
 
 
-def all_task():
+def all_tasks():
     """
-    Fetches user and todolist from REST API and extract some information
+    Fetches user and todolist from REST API and extracts information
     Returns:
     - None: None
     """
-    extracted_data_point = []
     user_data_url = "https://jsonplaceholder.typicode.com/users"
     todolist_data_url = "https://jsonplaceholder.typicode.com/todos"
+
     try:
-        # sending a get request to the user url
+        # Sending a get request to the user URL
         user_response = requests.get(user_data_url)
-        # sending a get request to the todo list url
-        todolist_respons = requests.get(todolist_data_url)
-        # Raise Exception if anything gone bad
-        user_response.raise_for_status() or todolist_respons.raise_for_status()
-        # convert Response to Json objects
+        # Sending a get request to the todo list URL
+        todolist_response = requests.get(todolist_data_url)
+        # Raise an exception if anything goes wrong
+        user_response.raise_for_status()
+        todolist_response.raise_for_status()
+        # Convert responses to JSON objects
         user_response_json = user_response.json()
-        # converting todolist to json objects
-        todo_response_json = todolist_respons.json()
+        todolist_response_json = todolist_response.json()
     except requests.exceptions.RequestException as e:
-        print(f"Error fetching TODOs for employee : {e}")
+        print(f"Error fetching data: {e}")
         sys.exit(1)
 
-    # getting username
+    # Organizing tasks data by user ID
     data = {}
     for user in user_response_json:
+        user_id = user.get("id")
         username = user.get("username")
-    # Searching for the user with specific id in the todo list
-    for todo in todo_response_json:
-        # checking for the UserId in the todo list
-        extracted_data = {"username": username,
-                          "task": todo.get('title'),
-                          "completed": todo.get('completed')}
-        extracted_data_point.append(extracted_data)
-        # creating a dictionary to store value
-        data["{}".format(todo.get("userId"))] = extracted_data_point
-    # filename
+        data[str(user_id)] = []
+
+        # Searching for tasks associated with the specific user ID
+        for todo in todolist_response_json:
+            if todo.get("userId") == user_id:
+                task_info = {
+                    "username": username,
+                    "task": todo.get("title"),
+                    "completed": todo.get("completed")
+                }
+                data[str(user_id)].append(task_info)
+
+    # File name
     filename = "todo_all_employees.json"
-    # creating a dictionary to store value
     with open(filename, 'w') as file:
-        # Write the extracted user data to the json file
-        json.dump(data, file)
+        # Write the organized data to the JSON file
+        json.dump(data, file, indent=2)
 
 
 if __name__ == "__main__":
-    all_task()
+    all_tasks()

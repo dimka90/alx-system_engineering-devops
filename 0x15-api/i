@@ -1,0 +1,39 @@
+import requests
+import json
+
+def fetch_all_employees_tasks():
+    # API endpoint for fetching tasks data for all users
+    api_url = 'https://jsonplaceholder.typicode.com/todos'
+
+    try:
+        # Fetch data from the API
+        response = requests.get(api_url)
+        tasks_data = response.json()
+
+        # Organize tasks data by user ID
+        organized_data = {}
+        for task in tasks_data:
+            user_id = task['userId']
+            username = task['username'] if 'username' in task else ''
+            task_info = {
+                'username': username,
+                'task': task['title'],
+                'completed': task['completed']
+            }
+            
+            if user_id not in organized_data:
+                organized_data[user_id] = []
+                
+            organized_data[user_id].append(task_info)
+
+        # Save the organized data to a JSON file
+        with open('todo_all_employees.json', 'w') as json_file:
+            json.dump(organized_data, json_file, indent=2)
+
+        print('Data saved to todo_all_employees.json successfully.')
+
+    except requests.exceptions.RequestException as e:
+        print(f'Error fetching data: {e}')
+
+if __name__ == "__main__":
+    fetch_all_employees_tasks()
