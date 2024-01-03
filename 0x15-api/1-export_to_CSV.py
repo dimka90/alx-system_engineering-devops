@@ -12,10 +12,7 @@ def Userinfor(user_id):
     Returns:
     - None: None
     """
-    task = []
-    extracted_data_point =[]
-    count = 0
-    completed_task = 0
+    extracted_data_point = []
     user_data_url = "https://jsonplaceholder.typicode.com/users"
     todolist_data_url = "https://jsonplaceholder.typicode.com/todos"
     try:
@@ -41,9 +38,12 @@ def Userinfor(user_id):
     for todo in todo_response_json:
         # checking for the UserId in the todo list
         if todo.get("userId") == user_id:
-            extracted_data = {"USER_ID": todo.get('userId'), "USERNAME": username, "TASK_COMPLETED_STATUS": todo.get('completed'), "TASK_TITLE": todo.get("title")}
-            extracted_data_point.append( extracted_data)
-    fieldnames = ["USER_ID","USERNAME","TASK_COMPLETED_STATUS","TASK_TITLE"]
+            extracted_data = {"USER_ID": todo.get('userId'),
+                              "USERNAME": username, "TASK_COMPLETED_STATUS":
+                              todo.get('completed'),
+                              "TASK_TITLE": todo.get("title")}
+            extracted_data_point.append(extracted_data)
+    fieldnames = ["USER_ID", "USERNAME", "TASK_COMPLETED_STATUS", "TASK_TITLE"]
     # filename
     filename = "{}.csv".format(user_id)
 
@@ -53,13 +53,9 @@ def Userinfor(user_id):
 
         csv_writer = csv.DictWriter(file, fieldnames=fieldnames)
 
-        # Write the header to the CSV file
-
         # Write the extracted student data to the CSV file
         csv_writer.writerows(extracted_data_point)
 
-
-    # print(task)
 
 if __name__ == "__main__":
     user_id = int(argv[1])
