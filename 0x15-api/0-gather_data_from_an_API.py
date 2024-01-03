@@ -12,7 +12,7 @@ def Userinfor(user_id):
     - None: None
     """
     task = []
-    total = 0
+    count = 0
     completed_task = 0
     user_data_url = "https://jsonplaceholder.typicode.com/users"
     todolist_data_url = "https://jsonplaceholder.typicode.com/todos"
@@ -39,16 +39,15 @@ def Userinfor(user_id):
     for todo in todo_response_json:
         # checking for the UserId in the todo list
         if todo.get("userId") == user_id:
-            # adding the todolist title to the list
-            task.append(todo.get('title'))
+            count += 1
             # Checking for completed task in the todo list
             if todo.get('completed') is True:
+                # adding the todolist title to the list
                 completed_task += 1
+                task.append(todo.get('title'))
     # Thet total number of task in the todo list
-    total = len(task)
-
     print("Employee {} is done with tasks({}/{}):".
-          format(username, completed_task, total))
+          format(username, completed_task, count))
     for item in (task):
         print('\t {}'.format(item))
 
