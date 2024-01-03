@@ -51,7 +51,7 @@ def Userinfor(user_id):
 
     with open(filename, 'w') as file:
 
-        csv_writer = csv.DictWriter(file, fieldnames=fieldnames)
+        csv_writer = csv.DictWriter(file, fieldnames=fieldnames, quoting=csv.QUOTE_ALL)
 
         # Write the extracted student data to the CSV file
         csv_writer.writerows(extracted_data_point)
