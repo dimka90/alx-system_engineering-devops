@@ -13,6 +13,7 @@ def Userinfor(user_id):
     - None: None
     """
     task = []
+    extracted_data_point =[]
     count = 0
     completed_task = 0
     user_data_url = "https://jsonplaceholder.typicode.com/users"
@@ -32,7 +33,7 @@ def Userinfor(user_id):
         print(f"Error fetching TODOs for employee {user_id}: {e}")
         sys.exit(1)
 
-    # getting username 
+    # getting username
     for user in user_response_json:
         if user.get("id") == user_id:
             username = user.get("username")
@@ -40,9 +41,25 @@ def Userinfor(user_id):
     for todo in todo_response_json:
         # checking for the UserId in the todo list
         if todo.get("userId") == user_id:
-            todo["username"] = username
-            task.append(todo)
-    print(task)
+            extracted_data = {"USER_ID": todo.get('userId'), "USERNAME": username, "TASK_COMPLETED_STATUS": todo.get('completed'), "TASK_TITLE": todo.get("title")}
+            extracted_data_point.append( extracted_data)
+    fieldnames = ["USER_ID","USERNAME","TASK_COMPLETED_STATUS","TASK_TITLE"]
+    # filename
+    filename = "{}.csv".format(user_id)
+
+    # Open the CSV file in write mode
+
+    with open(filename, 'w') as file:
+
+        csv_writer = csv.DictWriter(file, fieldnames=fieldnames)
+
+        # Write the header to the CSV file
+
+        # Write the extracted student data to the CSV file
+        csv_writer.writerows(extracted_data_point)
+
+
+    # print(task)
 
 if __name__ == "__main__":
     user_id = int(argv[1])
