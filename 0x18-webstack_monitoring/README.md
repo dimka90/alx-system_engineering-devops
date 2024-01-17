@@ -1,4 +1,3 @@
-
 0x18. Webstack monitoring
 DevOps
 SysAdmin
@@ -10,7 +9,6 @@ monitoring
  An auto review will be launched at the deadline
 Concepts
 For this project, we expect you to look at these concepts:
-
 Monitoring
 Server
 
