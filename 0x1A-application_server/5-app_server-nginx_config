@@ -1,0 +1,49 @@
+server {
+	listen 80 default_server;
+	listen [::]:80 default_server;
+
+	server_name _;
+	add_header X-Served-By $hostname;
+  
+
+	location /hbnb_static/ {
+		alias /data/web_static/current/;
+		try_files $uri $uri/ =404;
+	}
+        location /airbnb-onepage/{
+        proxy_pass http://127.0.0.1:5000/airbnb-onepage/;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+
+         }
+         location ~ /airbnb-dynamic/number_odd_or_even/(\d+)$ {
+         proxy_pass http://127.0.0.1:5001/number_odd_or_even/$1;
+         proxy_set_header Host $host;
+         proxy_set_header X-Real-IP $remote_addr;
+         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+         proxy_set_header X-Forwarded-Proto $scheme;
+         }
+         # server AirBnB_clon3 API
+         location /api {
+         proxy_pass http://127.0.0.1:5002/api; 
+         }
+         # Serving full web page
+         location / {
+          proxy_pass http://127.0.0.1:5003/2-hbnb;
+
+          }
+          # serving static content for AirBnb_clone_v4
+          location /static {
+          alias /home/ubuntu/AirBnB_clone_v4/web_dynamic/static;
+            }
+	if ($request_filename ~ redirect_me) {
+		rewrite ^ https://sketchfab.com/bluepeno/models permanent;
+	}
+
+	location = /404.html {
+		root /var/www/error/;
+		internal;
+	}
+}
